@@ -8,31 +8,33 @@ CourseLynx brings all of your college campus into one app, providing chats exclu
 
 ## Pages
 
-- **index.html** - Main homepage with hero section, feature carousel, and university slider
-- **features.html** - Detailed features showcase with screenshots
-- **use-cases.html** - Display of various use cases (classes, clubs, gaming, etc.)
-- **become-intern.html** - Application page for CourseLynx campus internships
-- **privacy-policy.html** - Privacy policy
-- **eula.html** - End User License Agreement
-- **terms.html** - Terms and Conditions
-- **success.html** - Success confirmation page
+- **public/index.html** - Main homepage with hero section, feature carousel, and university slider
+- **public/features.html** - Detailed features showcase with screenshots
+- **public/use-cases.html** - Display of various use cases (classes, clubs, gaming, etc.)
+- **public/become-intern.html** - Application page for CourseLynx campus internships
+- **public/privacy-policy.html** - Privacy policy
+- **public/eula.html** - End User License Agreement
+- **public/terms.html** - Terms and Conditions
+- **public/success.html** - Success confirmation page
 
 ## Project Structure
 
 ```
 .
 ├── README.md
-├── assets/
-│   ├── images/          # App screenshots, UI elements, brand assets
-│   └── logos/           # University logos
-├── index.html
-├── features.html
-├── use-cases.html
-├── become-intern.html
-├── privacy-policy.html
-├── eula.html
-├── terms.html
-└── success.html
+├── public/
+│   ├── assets/
+│   │   ├── images/      # App screenshots, UI elements, brand assets
+│   │   └── logos/       # University logos
+│   ├── index.html
+│   ├── features.html
+│   ├── use-cases.html
+│   ├── become-intern.html
+│   ├── privacy-policy.html
+│   ├── eula.html
+│   ├── terms.html
+│   └── success.html
+└── wrangler.jsonc
 ```
 
 ## Features
@@ -68,14 +70,14 @@ CourseLynx brings all of your college campus into one app, providing chats exclu
 
 ## Assets
 
-### Images Folder (`assets/images/`)
+### Images Folder (`public/assets/images/`)
 - App screenshots (classes.png, clubs.png, community.png, etc.)
 - Brand assets (cllogo.png, chrome.png)
 - Store badges (appstore.png, googleplay.png)
-- Background images (link.png, link2.png)
+- Optimized background image (link.jpg)
 - Social proof (100k.png)
 
-### Logos Folder (`assets/logos/`)
+### Logos Folder (`public/assets/logos/`)
 University partner logos including:
 - UC Berkeley (cal.png)
 - University of Florida (uf.png)
@@ -111,11 +113,10 @@ Optimized for modern browsers with support for:
 
 ## Cloudflare Workers deployment
 
-This site is configured for [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/). The build step stages only deployable pages and assets in `public/`; Wrangler then uploads that directory.
+This site is configured for [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/). All deployable pages and assets live directly in `public/`, which Wrangler uploads without a build step.
 
 ```bash
 pnpm install
-pnpm build     # prepare the public/ deployment directory
 pnpm dev       # local preview
 pnpm check     # validate the upload without publishing
 pnpm deploy    # publish to Cloudflare Workers

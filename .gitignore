@@ -5,6 +5,5 @@ Thumbs.db
 .pnpm-store/
 .wrangler/
 node_modules/
-public/
 *.swp
 *.swo
