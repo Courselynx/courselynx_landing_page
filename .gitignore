@@ -2,5 +2,9 @@
 Thumbs.db
 .vscode/
 .idea/
+.pnpm-store/
+.wrangler/
+node_modules/
+public/
 *.swp
 *.swo

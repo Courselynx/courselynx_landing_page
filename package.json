@@ -1,0 +1,17 @@
+{
+  "name": "courselynx-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/prepare-public.mjs",
+    "predev": "pnpm build",
+    "dev": "wrangler dev",
+    "precheck": "pnpm build",
+    "check": "wrangler deploy --dry-run",
+    "predeploy": "pnpm build",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.120.1"
+  }
+}

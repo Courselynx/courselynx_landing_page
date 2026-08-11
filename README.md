@@ -8,7 +8,7 @@ CourseLynx brings all of your college campus into one app, providing chats exclu
 
 ## Pages
 
-- **landing-page.html** - Main homepage with hero section, feature carousel, and university slider
+- **index.html** - Main homepage with hero section, feature carousel, and university slider
 - **features.html** - Detailed features showcase with screenshots
 - **use-cases.html** - Display of various use cases (classes, clubs, gaming, etc.)
 - **become-intern.html** - Application page for CourseLynx campus internships
@@ -25,7 +25,7 @@ CourseLynx brings all of your college campus into one app, providing chats exclu
 ├── assets/
 │   ├── images/          # App screenshots, UI elements, brand assets
 │   └── logos/           # University logos
-├── landing-page.html
+├── index.html
 ├── features.html
 ├── use-cases.html
 ├── become-intern.html
@@ -108,6 +108,23 @@ Optimized for modern browsers with support for:
 - CSS animations
 - CSS Grid and Flexbox
 - Modern CSS selectors
+
+## Cloudflare Workers deployment
+
+This site is configured for [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/). The build step stages only deployable pages and assets in `public/`; Wrangler then uploads that directory.
+
+```bash
+pnpm install
+pnpm build     # prepare the public/ deployment directory
+pnpm dev       # local preview
+pnpm check     # validate the upload without publishing
+pnpm deploy    # publish to Cloudflare Workers
+```
+
+On the first deployment, Wrangler opens a browser so you can sign in to the
+Cloudflare account that should own the Worker. The deployed Worker is named
+`courselynx-landing-page`; edit `name` in `wrangler.jsonc` if a different name
+is required.
 
 ## License
 
