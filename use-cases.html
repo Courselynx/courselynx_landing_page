@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Cases - CourseLynx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #000000;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Main curved container with background */
+        .main-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 20px 20px 10px 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            min-height: calc(100vh - 100px);
+            position: relative;
+        }
+
+        /* Sliding announcement banner */
+        .announcement-banner {
+            background: #DCECFC;
+            color: black;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .announcement-text {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-pill {
+            background: transparent;
+            border-radius: 50px;
+            padding: 8px 15px;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .logo-pill:hover {
+            opacity: 0.8;
+        }
+
+        .logo-pill img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-pill {
+            background: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            border: 2px solid black;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-pill.intern {
+            background: black;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .nav-pill.intern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-pill.active {
+            background: #DCECFC;
+            color: black;
+        }
+
+        .nav-desktop-link {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-desktop-link:hover {
+            transform: translateY(-2px);
+            opacity: 0.8;
+        }
+
+        .nav-desktop-link img {
+            height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 60px 80px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Use Cases Grid */
+        .use-cases-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+        }
+
+        .use-case-bubble {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 25px 35px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .use-case-bubble:nth-child(1) { animation-delay: 0s; }
+        .use-case-bubble:nth-child(2) { animation-delay: 0.5s; }
+        .use-case-bubble:nth-child(3) { animation-delay: 1s; }
+        .use-case-bubble:nth-child(4) { animation-delay: 1.5s; }
+        .use-case-bubble:nth-child(5) { animation-delay: 2s; }
+        .use-case-bubble:nth-child(6) { animation-delay: 2.5s; }
+        .use-case-bubble:nth-child(7) { animation-delay: 3s; }
+        .use-case-bubble:nth-child(8) { animation-delay: 3.5s; }
+        .use-case-bubble:nth-child(9) { animation-delay: 4s; }
+        .use-case-bubble:nth-child(10) { animation-delay: 4.5s; }
+        .use-case-bubble:nth-child(11) { animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .use-case-bubble:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .use-case-emoji {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .use-case-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .more-btn {
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .more-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 0 20px 20px 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            height: 120px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            height: 100%;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .footer-buttons .btn-store img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .content-area {
+                padding: 40px 20px;
+            }
+
+            .footer-wrapper {
+                height: auto;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sliding Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="announcement-text">
+            Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-left">
+                <a href="landing-page.html" class="logo-pill">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="features.html" class="nav-pill">Features</a>
+                <a href="use-cases.html" class="nav-pill active">Use cases</a>
+                <a href="become-intern.html" class="nav-pill intern">Become Intern</a>
+            </div>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="use-cases-grid">
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">📚</span>
+                    <div class="use-case-label">Classes</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">📖</span>
+                    <div class="use-case-label">Study Groups</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🎭</span>
+                    <div class="use-case-label">Clubs</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🏛️</span>
+                    <div class="use-case-label">Greek Life</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🏈</span>
+                    <div class="use-case-label">Fantasy Football</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🤖</span>
+                    <div class="use-case-label">AI & Startups</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">💼</span>
+                    <div class="use-case-label">Internships</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🎓</span>
+                    <div class="use-case-label">Alumni</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🎉</span>
+                    <div class="use-case-label">Parties</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🎮</span>
+                    <div class="use-case-label">Gaming</div>
+                </div>
+                <div class="use-case-bubble">
+                    <span class="use-case-emoji">🐾</span>
+                    <div class="use-case-label">Furries</div>
+                </div>
+            </div>
+            <button class="more-btn">And Many More...</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="landing-page.html">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="CourseLynx Logo">
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:support@courselynx.com">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="eula.html">EULA</a>
+                <a href="terms.html">Terms and Conditions</a>
+            </div>
+            <div class="footer-buttons">
+                <a href="https://apps.apple.com/us/app/courselynx/id6475077109?l=es-MX" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/appstore.png" alt="Download on App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.courselynx.courselynx_phoenix&hl=en-US" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/googleplay.png" alt="Download on Google Play">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

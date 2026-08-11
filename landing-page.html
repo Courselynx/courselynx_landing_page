@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHATS FOR .edu STUDENTS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #000000;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Main curved container with background */
+        .main-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 20px 20px 0 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            min-height: calc(100vh - 100px);
+            position: relative;
+        }
+
+        /* Sliding announcement banner */
+        .announcement-banner {
+            background: #DCECFC;
+            color: black;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .announcement-text {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-pill {
+            background: transparent;
+            border-radius: 50px;
+            padding: 8px 15px;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .logo-pill:hover {
+            opacity: 0.8;
+        }
+
+        .logo-pill img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-pill {
+            background: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            border: 2px solid black;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-pill.download {
+            background: white;
+            color: black;
+        }
+
+        .nav-pill.download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-pill.intern {
+            background: black;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .nav-pill.intern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-desktop-link {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-desktop-link:hover {
+            transform: translateY(-2px);
+            opacity: 0.8;
+        }
+
+        .nav-desktop-link img {
+            height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 40px 80px 40px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 60px;
+        }
+
+        /* Left Side */
+        .left-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .hero-text {
+            color: white;
+            margin-bottom: 35px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 82px;
+            line-height: 1.05;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+        }
+
+        .hero-text h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h2 .edu {
+            font-style: italic;
+            color: white;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 4px;
+        }
+
+        .download-buttons-left {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .btn-store {
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .btn-store img {
+            height: 50px;
+            width: auto;
+        }
+
+        .btn-store:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Join Users Badge - Blue Liquid Glass */
+        .join-users-badge {
+            margin-top: 20px;
+            background: rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
+            padding: 14px 24px;
+            border: 1.5px solid rgba(96, 165, 250, 0.5);
+            box-shadow:
+                0 8px 32px rgba(59, 130, 246, 0.25),
+                inset 0 1px 0 rgba(147, 197, 253, 0.4),
+                0 0 40px rgba(59, 130, 246, 0.15);
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .join-users-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg,
+                rgba(147, 197, 253, 0.2) 0%,
+                rgba(147, 197, 253, 0) 100%);
+            border-radius: 16px 16px 0 0;
+            pointer-events: none;
+        }
+
+        .join-users-badge::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 16px;
+            padding: 1.5px;
+            background: linear-gradient(135deg,
+                rgba(147, 197, 253, 0.6) 0%,
+                rgba(59, 130, 246, 0.4) 50%,
+                rgba(96, 165, 250, 0.6) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .join-users-badge:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 40px rgba(59, 130, 246, 0.35),
+                inset 0 1px 0 rgba(147, 197, 253, 0.5),
+                0 0 50px rgba(59, 130, 246, 0.25);
+            border-color: rgba(147, 197, 253, 0.7);
+        }
+
+        .join-users-badge-icon {
+            font-size: 18px;
+        }
+
+        .join-users-badge-text {
+            font-size: 14px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+        }
+
+        /* University Slider */
+        .university-slider-section {
+            background: #000000;
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        .university-header {
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #808080;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .university-slider-wrapper {
+            display: flex;
+            width: fit-content;
+            animation: scroll-universities 40s linear infinite;
+            gap: 80px;
+        }
+
+        .university-slider {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .university-logo {
+            height: 90px;
+            width: auto;
+            flex-shrink: 0;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .university-logo:hover {
+            opacity: 1;
+        }
+
+        @keyframes scroll-universities {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-100% / 2));
+            }
+        }
+
+        /* Footer Section */
+        .footer-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 0 20px 20px 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            height: 120px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            height: 100%;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .footer-buttons .btn-store img {
+            height: 40px;
+        }
+
+        /* Right Side - iPhone Screen */
+        .right-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            min-height: 450px;
+            padding-top: 0;
+        }
+
+        .iphone-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iphone-screen {
+            position: absolute;
+            background: white;
+            border-radius: 45px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            border: 10px solid #1a1a1a;
+            transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .iphone-screen::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 22px;
+            background: #000000;
+            border-radius: 20px;
+            z-index: 10;
+            transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .iphone-screen.center {
+            width: 250px;
+            height: 541px;
+            transform: rotate(-5deg) translateY(0px);
+            z-index: 3;
+            animation: levitate 3s ease-in-out infinite;
+        }
+
+        .iphone-screen.center::before {
+            width: 100px;
+            height: 22px;
+            top: 6px;
+        }
+
+        .iphone-screen.left {
+            width: 180px;
+            height: 389px;
+            transform: translateX(-160px) scale(0.85) rotate(-8deg);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .iphone-screen.left::before {
+            width: 72px;
+            height: 16px;
+            top: 5px;
+        }
+
+        .iphone-screen.right {
+            width: 180px;
+            height: 389px;
+            transform: translateX(160px) scale(0.85) rotate(-2deg);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .iphone-screen.right::before {
+            width: 72px;
+            height: 16px;
+            top: 5px;
+        }
+
+        .iphone-screen.hidden {
+            opacity: 0;
+            transform: scale(0.5);
+            pointer-events: none;
+        }
+
+        @keyframes levitate {
+            0%, 100% {
+                transform: rotate(-5deg) translateY(0px);
+            }
+            50% {
+                transform: rotate(-5deg) translateY(-12px);
+            }
+        }
+
+        .screen-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .arrow-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .screen-label {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 12px 30px;
+            color: white;
+            font-size: 18px;
+            font-weight: 900;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            min-width: 140px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* Classes Label - Liquid Glass Effect (Left Side) */
+        .classes-label-container {
+            position: absolute;
+            left: -220px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0;
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .classes-label-container.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .classes-label-container:not(.active) {
+            opacity: 0;
+            transform: translateY(-50%) translateX(-20px);
+        }
+
+        .classes-label-container .connecting-line {
+            order: 1;
+            background: linear-gradient(90deg,
+                rgba(255, 255, 255, 0.6) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0.1) 100%);
+            margin-left: 0;
+            margin-right: -1px;
+        }
+
+        .classes-label-container .connecting-line::before {
+            left: auto;
+            right: 0;
+        }
+
+        /* Clubs Label - Liquid Glass Effect (Right Side) */
+        .clubs-label-container {
+            position: absolute;
+            right: -220px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0;
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .clubs-label-container.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .clubs-label-container:not(.active) {
+            opacity: 0;
+            transform: translateY(-50%) translateX(20px);
+        }
+
+        /* Community Label - Liquid Glass Effect (Right Side) */
+        .community-label-container {
+            position: absolute;
+            right: -220px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0;
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .community-label-container.active {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .community-label-container:not(.active) {
+            opacity: 0;
+            transform: translateY(-50%) translateX(20px);
+        }
+
+        .connecting-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0.6) 100%);
+            position: relative;
+            margin-left: -1px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            order: -1;
+        }
+
+        .connecting-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+                transform: translateY(-50%) scale(1);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+                transform: translateY(-50%) scale(1.2);
+            }
+        }
+
+        .liquid-glass-label {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            padding: 22px 24px;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 0 40px rgba(255, 255, 255, 0.05);
+            position: relative;
+            width: 240px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .liquid-glass-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0) 100%);
+            border-radius: 20px 20px 0 0;
+            pointer-events: none;
+        }
+
+        .liquid-glass-label:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 0 50px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .label-text {
+            font-size: 18px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            line-height: 1.3;
+            text-transform: uppercase;
+        }
+
+        .label-subtext {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.2px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+
+        .connecting-line {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+
+            .hero-text h2 {
+                font-size: 28px;
+            }
+
+            .carousel-wrapper {
+                height: 350px;
+            }
+
+            .iphone-screen.center {
+                width: 200px;
+                height: 433px;
+            }
+
+            .iphone-screen.left,
+            .iphone-screen.right {
+                width: 140px;
+                height: 303px;
+            }
+
+            .iphone-screen.left {
+                transform: translateX(-100px) scale(0.85) rotate(-8deg);
+            }
+
+            .iphone-screen.right {
+                transform: translateX(100px) scale(0.85) rotate(-2deg);
+            }
+
+            .right-side {
+                min-height: 400px;
+            }
+
+            .footer-wrapper {
+                height: auto;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+            }
+
+            .university-logo {
+                height: 60px;
+            }
+
+            .classes-label-container,
+            .clubs-label-container,
+            .community-label-container {
+                left: 50%;
+                right: auto;
+                top: auto;
+                bottom: 80px;
+                transform: translateX(-50%);
+            }
+
+            .classes-label-container.active,
+            .clubs-label-container.active,
+            .community-label-container.active {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .classes-label-container:not(.active),
+            .clubs-label-container:not(.active),
+            .community-label-container:not(.active) {
+                opacity: 0;
+                transform: translateX(-50%) translateY(10px);
+            }
+
+            .connecting-line {
+                display: none;
+            }
+
+            .liquid-glass-label {
+                width: 200px;
+                padding: 18px 20px;
+            }
+
+            .label-text {
+                font-size: 15px;
+            }
+
+            .label-subtext {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sliding Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="announcement-text">
+            Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-left">
+                <a href="/" class="logo-pill">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="https://chromewebstore.google.com/detail/courselynx/jlkkmogoppoeklmphegjnapbahappopj?hl=en-GB&utm_source=ext_sidebar" class="nav-desktop-link" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/chrome.png" alt="Chrome Extension">
+                </a>
+                <a href="features.html" class="nav-pill">Features</a>
+                <a href="use-cases.html" class="nav-pill">Use cases</a>
+                <a href="become-intern.html" class="nav-pill intern">Become Intern</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Left Side -->
+            <div class="left-side">
+                <div class="hero-text">
+                    <h1>ALL OF YOUR<br>COLLEGE CAMPUS.<br>IN ONE APP.</h1>
+                    <h2>CHATS FOR <span class="edu">.edu</span> STUDENTS</h2>
+                </div>
+                <div class="download-buttons-left">
+                    <a href="https://apps.apple.com/us/app/courselynx/id6475077109?l=es-MX" class="btn-store" target="_blank">
+                        <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/appstore.png" alt="Download on App Store">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.courselynx.courselynx_phoenix&hl=en-US" class="btn-store" target="_blank">
+                        <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/googleplay.png" alt="Download on Google Play">
+                    </a>
+                </div>
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/100k.png" alt="100k users" style="width: 140px; height: auto; margin-top: 10px;">
+            </div>
+
+            <!-- Right Side - iPhone Screen -->
+            <div class="right-side">
+                <div class="iphone-container">
+                    <div class="carousel-wrapper">
+                        <div class="iphone-screen left" data-screen="1">
+                            <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/classes.png" alt="Classes" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="iphone-screen center" data-screen="2">
+                            <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/clubs.png" alt="Clubs" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="iphone-screen right" data-screen="3">
+                            <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/community.png" alt="Community" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+
+                        <!-- Liquid Glass Label for Classes Screen -->
+                        <div class="classes-label-container">
+                            <div class="liquid-glass-label">
+                                <div class="label-text">Your classes, unified</div>
+                                <div class="label-subtext">Auto-join class chats from Canvas & access study materials</div>
+                            </div>
+                            <div class="connecting-line"></div>
+                        </div>
+
+                        <!-- Liquid Glass Label for Clubs Screen -->
+                        <div class="clubs-label-container">
+                            <div class="connecting-line"></div>
+                            <div class="liquid-glass-label">
+                                <div class="label-text">Explore campus clubs</div>
+                                <div class="label-subtext">Discover and join every club on campus</div>
+                            </div>
+                        </div>
+
+                        <!-- Liquid Glass Label for Community Screen -->
+                        <div class="community-label-container">
+                            <div class="connecting-line"></div>
+                            <div class="liquid-glass-label">
+                                <div class="label-text">Discover your tribe</div>
+                                <div class="label-subtext">Connect with thousands of students</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-controls">
+                        <button class="arrow-btn" id="prevBtn">&lt;</button>
+                        <div class="screen-label" id="screenLabel">Clubs</div>
+                        <button class="arrow-btn" id="nextBtn">&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- University Slider -->
+    <div class="university-slider-section">
+        <div class="university-header">Used by students at...</div>
+        <div class="university-slider-wrapper">
+            <div class="university-slider">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/uf.png" alt="University of Florida" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cal.png" alt="UC Berkeley" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/asu.png" alt="Arizona State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/clemson.png" alt="Clemson University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/fiu.png" alt="Florida International University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/fsu.png" alt="Florida State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/ohio.png" alt="Ohio State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/penn.png" alt="Penn State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/rutgers.png" alt="Rutgers University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/a&m.png" alt="Texas A&M University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/tt.png" alt="Texas Tech University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/ucla.png" alt="UCLA" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/ucf.png" alt="University of Central Florida" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/boulder.png" alt="University of Colorado Boulder" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/uta.png" alt="University of Texas Arlington" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/austin.png" alt="University of Texas Austin" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/uwm.png" alt="University of Wisconsin Madison" class="university-logo">
+            </div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="university-slider">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/uf.png" alt="University of Florida" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cal.png" alt="UC Berkeley" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/asu.png" alt="Arizona State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/clemson.png" alt="Clemson University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/fiu.png" alt="Florida International University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/fsu.png" alt="Florida State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/ohio.png" alt="Ohio State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/penn.png" alt="Penn State University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/rutgers.png" alt="Rutgers University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/a&m.png" alt="Texas A&M University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/tt.png" alt="Texas Tech University" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/ucla.png" alt="UCLA" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/ucf.png" alt="University of Central Florida" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/boulder.png" alt="University of Colorado Boulder" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/uta.png" alt="University of Texas Arlington" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/austin.png" alt="University of Texas Austin" class="university-logo">
+                <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/uwm.png" alt="University of Wisconsin Madison" class="university-logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="landing-page.html">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="CourseLynx Logo">
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:support@courselynx.com">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="eula.html">EULA</a>
+                <a href="terms.html">Terms and Conditions</a>
+            </div>
+            <div class="footer-buttons">
+                <a href="https://chromewebstore.google.com/detail/courselynx/jlkkmogoppoeklmphegjnapbahappopj?hl=en-GB&utm_source=ext_sidebar" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/chrome.png" alt="Chrome Extension">
+                </a>
+                <a href="https://apps.apple.com/us/app/courselynx/id6475077109?l=es-MX" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/appstore.png" alt="Download on App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.courselynx.courselynx_phoenix&hl=en-US" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/googleplay.png" alt="Download on Google Play">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const screens = document.querySelectorAll('.iphone-screen');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const screenLabel = document.getElementById('screenLabel');
+        const classesLabel = document.querySelector('.classes-label-container');
+        const clubsLabel = document.querySelector('.clubs-label-container');
+        const communityLabel = document.querySelector('.community-label-container');
+
+        const labels = ['Classes', 'Clubs', 'Community'];
+        let currentIndex = 2; // Center screen is at index 2 (Community)
+
+        function updateCarousel() {
+            screens.forEach((screen, index) => {
+                screen.classList.remove('left', 'center', 'right', 'hidden');
+
+                const position = (index - currentIndex + screens.length) % screens.length;
+
+                if (position === 0) {
+                    screen.classList.add('center');
+                } else if (position === screens.length - 1) {
+                    screen.classList.add('left');
+                } else if (position === 1) {
+                    screen.classList.add('right');
+                } else {
+                    screen.classList.add('hidden');
+                }
+            });
+
+            // Update label text
+            screenLabel.textContent = labels[currentIndex];
+
+            // Show/hide labels based on current screen
+            if (currentIndex === 0) { // Classes screen
+                classesLabel.classList.add('active');
+                clubsLabel.classList.remove('active');
+                communityLabel.classList.remove('active');
+            } else if (currentIndex === 1) { // Clubs screen
+                classesLabel.classList.remove('active');
+                clubsLabel.classList.add('active');
+                communityLabel.classList.remove('active');
+            } else if (currentIndex === 2) { // Community screen
+                classesLabel.classList.remove('active');
+                clubsLabel.classList.remove('active');
+                communityLabel.classList.add('active');
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % screens.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+            updateCarousel();
+        });
+
+        // Initialize
+        updateCarousel();
+    </script>
+
+</body>
+</html>

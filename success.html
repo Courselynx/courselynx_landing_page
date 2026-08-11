@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Submitted - CourseLynx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #000000;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-container {
+            text-align: center;
+            padding: 60px;
+        }
+
+        .checkmark-circle {
+            width: 120px;
+            height: 120px;
+            background: rgba(76, 175, 80, 0.2);
+            border: 3px solid #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .checkmark {
+            font-size: 60px;
+            color: #4CAF50;
+            animation: checkmarkAppear 0.3s ease-out 0.3s backwards;
+        }
+
+        @keyframes checkmarkAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 48px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            animation: fadeInUp 0.5s ease-out 0.5s backwards;
+        }
+
+        .success-message {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            animation: fadeInUp 0.5s ease-out 0.6s backwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #DCECFC;
+            border: 2px solid black;
+            border-radius: 50px;
+            color: black;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.5s ease-out 0.7s backwards;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 236, 252, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="checkmark-circle">
+            <div class="checkmark">✓</div>
+        </div>
+        <h1 class="success-title">Form Submitted</h1>
+        <p class="success-message">Thank you for your application! We'll review it and get back to you soon.</p>
+        <a href="landing-page.html" class="back-btn">Back to Home</a>
+    </div>
+</body>
+</html>

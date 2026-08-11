@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become an Intern - CourseLynx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #000000;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Main curved container with background */
+        .main-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 20px 20px 10px 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            min-height: calc(100vh - 100px);
+            position: relative;
+        }
+
+        /* Sliding announcement banner */
+        .announcement-banner {
+            background: #DCECFC;
+            color: black;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .announcement-text {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-pill {
+            background: transparent;
+            border-radius: 50px;
+            padding: 8px 15px;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .logo-pill:hover {
+            opacity: 0.8;
+        }
+
+        .logo-pill img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-pill {
+            background: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            border: 2px solid black;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-pill.intern {
+            background: black;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .nav-pill.intern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-pill.active {
+            background: #DCECFC;
+            color: black;
+        }
+
+        .nav-desktop-link {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-desktop-link:hover {
+            transform: translateY(-2px);
+            opacity: 0.8;
+        }
+
+        .nav-desktop-link img {
+            height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 60px 80px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Form Styling */
+        .intern-form-container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .form-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 56px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .intern-form {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            color: white;
+            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload-btn {
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .file-upload-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #DCECFC;
+            border: 2px solid black;
+            border-radius: 50px;
+            color: black;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 236, 252, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 0 20px 20px 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            height: 120px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            height: 100%;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .footer-buttons .btn-store img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .content-area {
+                padding: 40px 20px;
+            }
+
+            .footer-wrapper {
+                height: auto;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sliding Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="announcement-text">
+            Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-left">
+                <a href="landing-page.html" class="logo-pill">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="features.html" class="nav-pill">Features</a>
+                <a href="use-cases.html" class="nav-pill">Use cases</a>
+                <a href="become-intern.html" class="nav-pill intern active">Become Intern</a>
+            </div>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="intern-form-container">
+                <h1 class="form-title">JOIN OUR TEAM</h1>
+                <p class="form-subtitle">Help us bring CourseLynx to your campus. Get paid while building the future of college communities.</p>
+
+                <form class="intern-form" action="https://formsubmit.co/nicolascanoluengo@gmail.com" method="POST" enctype="multipart/form-data">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_next" value="https://your-domain.com/success.html">
+                    <input type="hidden" name="_subject" value="New CourseLynx Intern Application">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none">
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="john@university.edu" required>
+                    </div>
+
+                    <!-- University -->
+                    <div class="form-group">
+                        <label class="form-label" for="university">University *</label>
+                        <input type="text" id="university" name="university" class="form-input" placeholder="Stanford University" required>
+                    </div>
+
+                    <!-- Resume Upload -->
+                    <div class="form-group">
+                        <label class="form-label" for="resume">Resume (PDF) *</label>
+                        <div class="form-file-upload">
+                            <div class="file-upload-btn" id="fileLabel">Choose File</div>
+                            <input type="file" id="resume" name="resume" accept=".pdf" required>
+                        </div>
+                    </div>
+
+                    <!-- Question 1 -->
+                    <div class="form-group">
+                        <label class="form-label" for="question1">Why do you want to be a CourseLynx campus intern? *</label>
+                        <textarea id="question1" name="question1" class="form-textarea" placeholder="Tell us what excites you about this opportunity..." required></textarea>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="form-group">
+                        <label class="form-label" for="question2">How would you promote CourseLynx on your campus? *</label>
+                        <textarea id="question2" name="question2" class="form-textarea" placeholder="Share your ideas and strategies..." required></textarea>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="form-group">
+                        <label class="form-label" for="question3">What makes you a great fit for this role? *</label>
+                        <textarea id="question3" name="question3" class="form-textarea" placeholder="Tell us about your relevant experience and skills..." required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            // Update file input label when file is selected
+            const fileInput = document.getElementById('resume');
+            const fileLabel = document.getElementById('fileLabel');
+
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    fileLabel.textContent = e.target.files[0].name;
+                } else {
+                    fileLabel.textContent = 'Choose File';
+                }
+            });
+        </script>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="landing-page.html">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="CourseLynx Logo">
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:support@courselynx.com">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="eula.html">EULA</a>
+                <a href="terms.html">Terms and Conditions</a>
+            </div>
+            <div class="footer-buttons">
+                <a href="https://apps.apple.com/us/app/courselynx/id6475077109?l=es-MX" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/appstore.png" alt="Download on App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.courselynx.courselynx_phoenix&hl=en-US" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/googleplay.png" alt="Download on Google Play">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

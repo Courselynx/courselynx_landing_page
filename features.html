@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - CourseLynx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #000000;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Main curved container with background */
+        .main-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 20px 20px 10px 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            min-height: calc(100vh - 80px);
+            position: relative;
+        }
+
+        /* Sliding announcement banner */
+        .announcement-banner {
+            background: #DCECFC;
+            color: black;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .announcement-text {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            gap: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-pill {
+            background: transparent;
+            border-radius: 50px;
+            padding: 8px 15px;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .logo-pill:hover {
+            opacity: 0.8;
+        }
+
+        .logo-pill img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-pill {
+            background: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            border: 2px solid black;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .nav-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-pill.intern {
+            background: black;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .nav-pill.intern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-pill.active {
+            background: #DCECFC;
+            color: black;
+        }
+
+        .nav-desktop-link {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-desktop-link:hover {
+            transform: translateY(-2px);
+            opacity: 0.8;
+        }
+
+        .nav-desktop-link img {
+            height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 20px 80px 40px 80px;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Features Layout */
+        .features-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Left side - Carousel */
+        .carousel-section {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iphone-screen {
+            position: absolute;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border: 8px solid black;
+        }
+
+        .iphone-screen::before {
+            content: '';
+            position: absolute;
+            background: #000000;
+            border-radius: 20px;
+            z-index: 10;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .iphone-screen img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .iphone-screen.center {
+            width: 250px;
+            height: 541px;
+            z-index: 3;
+            transform: rotate(-5deg);
+            animation: levitate 4s ease-in-out infinite;
+        }
+
+        .iphone-screen.center::before {
+            width: 100px;
+            height: 22px;
+            top: 8px;
+        }
+
+        .iphone-screen.left {
+            width: 180px;
+            height: 389px;
+            z-index: 1;
+            transform: translateX(-150px) scale(0.85) rotate(-10deg);
+        }
+
+        .iphone-screen.left::before {
+            width: 72px;
+            height: 16px;
+            top: 5px;
+        }
+
+        .iphone-screen.right {
+            width: 180px;
+            height: 389px;
+            z-index: 2;
+            transform: translateX(150px) scale(0.85) rotate(0deg);
+        }
+
+        .iphone-screen.right::before {
+            width: 72px;
+            height: 16px;
+            top: 5px;
+        }
+
+        .iphone-screen.hidden {
+            opacity: 0;
+            transform: scale(0.5);
+            pointer-events: none;
+        }
+
+        @keyframes levitate {
+            0%, 100% {
+                transform: rotate(-5deg) translateY(0px);
+            }
+            50% {
+                transform: rotate(-5deg) translateY(-12px);
+            }
+        }
+
+        .screen-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .arrow-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrow-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Right side - Feature Text */
+        .feature-text-section {
+            flex: 0 0 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 350px;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            width: 80%;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .feature-box.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .feature-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 40px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .feature-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        .footer-wrapper {
+            max-width: calc(100% - 40px);
+            margin: 0 20px 20px 20px;
+            background-image: url('/Users/franciscojosecanoserrano/Desktop/courselynx/link.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px;
+            overflow: hidden;
+            height: 120px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            height: 100%;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .footer-buttons .btn-store img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .content-area {
+                padding: 40px 20px;
+            }
+
+            /* Mobile Features Layout */
+            .features-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .carousel-section {
+                flex: 0 0 auto;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .carousel-wrapper {
+                height: 450px;
+            }
+
+            .feature-text-section {
+                flex: 0 0 auto;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: auto;
+            }
+
+            .feature-box {
+                position: relative;
+                width: 90%;
+                max-width: none;
+            }
+
+            .feature-title {
+                font-size: 32px;
+                text-align: center;
+            }
+
+            .feature-description {
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .coming-soon {
+                display: block;
+                text-align: center;
+            }
+
+            .footer-wrapper {
+                height: auto;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sliding Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="announcement-text">
+            Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-left">
+                <a href="landing-page.html" class="logo-pill">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="features.html" class="nav-pill active">Features</a>
+                <a href="use-cases.html" class="nav-pill">Use cases</a>
+                <a href="become-intern.html" class="nav-pill intern">Become Intern</a>
+            </div>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="features-container">
+                <!-- Left Side: Carousel -->
+                <div class="carousel-section">
+                    <div class="carousel-wrapper">
+                        <div class="iphone-screen center">
+                            <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/signin.png" alt="Students Only" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="iphone-screen left">
+                            <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/home.png" alt="Accessibility" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="iphone-screen right">
+                            <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/community.png" alt="Anonymous" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="iphone-screen hidden">
+                            <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/media.png" alt="Rich Media" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <div class="screen-controls">
+                        <div class="arrow-btn" id="prevBtn">&lt;</div>
+                        <div class="arrow-btn" id="nextBtn">&gt;</div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Feature Text -->
+                <div class="feature-text-section">
+                    <!-- Feature 1: Students Only -->
+                    <div class="feature-box active">
+                        <h2 class="feature-title">STUDENTS ONLY</h2>
+                        <p class="feature-description">
+                            Verified .edu access. Real students, real connections. Join a trusted community where only verified college students can interact.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2: Accessibility -->
+                    <div class="feature-box">
+                        <h2 class="feature-title">ACCESSIBILITY</h2>
+                        <p class="feature-description">
+                            Group chats for every class, club, and topic. Your entire campus in one place. Never miss an update.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3: Anonymous Messages -->
+                    <div class="feature-box">
+                        <h2 class="feature-title">ANONYMOUS MESSAGES</h2>
+                        <p class="feature-description">
+                            Share freely. Ask anything. Stay anonymous when you need to. Connect authentically without judgment.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4: Rich Media -->
+                    <div class="feature-box">
+                        <h2 class="feature-title">RICH MEDIA</h2>
+                        <p class="feature-description">
+                            Polls, voice memos, and file sharing. More ways to connect with your campus community.
+                        </p>
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const screens = document.querySelectorAll('.iphone-screen');
+        const featureBoxes = document.querySelectorAll('.feature-box');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            screens.forEach((screen, index) => {
+                screen.classList.remove('left', 'center', 'right', 'hidden');
+
+                const position = (index - currentIndex + screens.length) % screens.length;
+
+                if (position === 0) {
+                    screen.classList.add('center');
+                } else if (position === screens.length - 1) {
+                    screen.classList.add('left');
+                } else if (position === 1) {
+                    screen.classList.add('right');
+                } else {
+                    screen.classList.add('hidden');
+                }
+            });
+
+            // Update feature boxes
+            featureBoxes.forEach((box, index) => {
+                if (index === currentIndex) {
+                    box.classList.add('active');
+                } else {
+                    box.classList.remove('active');
+                }
+            });
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % screens.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+            updateCarousel();
+        });
+
+        // Initialize
+        updateCarousel();
+    </script>
+
+    <!-- Footer -->
+    <div class="footer-wrapper">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="landing-page.html">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/cllogo.png" alt="CourseLynx Logo">
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:support@courselynx.com">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="eula.html">EULA</a>
+                <a href="terms.html">Terms and Conditions</a>
+            </div>
+            <div class="footer-buttons">
+                <a href="https://apps.apple.com/us/app/courselynx/id6475077109?l=es-MX" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/appstore.png" alt="Download on App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.courselynx.courselynx_phoenix&hl=en-US" class="btn-store" target="_blank">
+                    <img src="/Users/franciscojosecanoserrano/Desktop/courselynx/googleplay.png" alt="Download on Google Play">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
