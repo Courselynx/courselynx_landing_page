@@ -448,7 +448,7 @@
             /* Mobile Features Layout */
             .features-container {
                 flex-direction: column;
-                gap: 40px;
+                gap: 30px;
             }
 
             .carousel-section {
@@ -459,37 +459,65 @@
             }
 
             .carousel-wrapper {
-                height: 450px;
+                height: 400px;
+            }
+
+            .iphone-screen.center {
+                width: 200px;
+                height: 433px;
+            }
+
+            .iphone-screen.left {
+                width: 144px;
+                height: 312px;
+                transform: translateX(-100px) scale(0.85) rotate(-10deg);
+            }
+
+            .iphone-screen.right {
+                width: 144px;
+                height: 312px;
+                transform: translateX(100px) scale(0.85) rotate(0deg);
             }
 
             .feature-text-section {
                 flex: 0 0 auto;
                 width: 100%;
                 display: flex;
-                align-items: center;
+                align-items: stretch;
                 justify-content: center;
-                min-height: auto;
+                min-height: 200px;
+                position: relative;
             }
 
             .feature-box {
-                position: relative;
-                width: 90%;
+                position: static;
+                width: 100%;
                 max-width: none;
+                padding: 30px 25px;
+                display: none;
+            }
+
+            .feature-box.active {
+                display: block;
+                opacity: 1;
+                transform: none;
             }
 
             .feature-title {
-                font-size: 32px;
+                font-size: 28px;
                 text-align: center;
             }
 
             .feature-description {
                 font-size: 16px;
                 text-align: center;
+                line-height: 1.6;
             }
 
             .coming-soon {
                 display: block;
                 text-align: center;
+                margin-top: 20px;
             }
 
             .footer-wrapper {
