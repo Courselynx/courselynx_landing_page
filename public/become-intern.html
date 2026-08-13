@@ -434,8 +434,10 @@
                     <!-- FormSubmit Configuration -->
                     <input type="hidden" id="successUrl" name="_next">
                     <input type="hidden" name="_subject" value="New CourseLynx Intern Application">
+                    <input type="hidden" name="_cc" value="cory@courselynx.com">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_template" value="table">
 
                     <!-- Name -->
                     <div class="form-group">
@@ -494,8 +496,7 @@
             const fileLabel = document.getElementById('fileLabel');
             const successUrl = document.getElementById('successUrl');
 
-            // FormSubmit requires an absolute redirect URL. Build it from the
-            // active Workers/custom domain so previews and production both work.
+            // FormSubmit requires an absolute redirect URL
             successUrl.value = new URL('/success', window.location.origin).href;
 
             fileInput.addEventListener('change', function(e) {
