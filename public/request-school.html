@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Use Cases - CourseLynx</title>
+    <title>Request Your School - CourseLynx</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,94 +165,102 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
 
-        /* Use Cases Grid */
-        .use-cases-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            align-items: center;
-            max-width: 900px;
+        /* Form Styling */
+        .request-form-container {
+            max-width: 700px;
+            width: 100%;
         }
 
-        .use-case-bubble {
+        .form-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 56px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .request-form {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 30px;
-            padding: 25px 35px;
-            text-align: center;
-            transition: all 0.4s;
-            cursor: pointer;
-            animation: float 6s ease-in-out infinite;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
-        .use-case-bubble:nth-child(1) { animation-delay: 0s; }
-        .use-case-bubble:nth-child(2) { animation-delay: 0.5s; }
-        .use-case-bubble:nth-child(3) { animation-delay: 1s; }
-        .use-case-bubble:nth-child(4) { animation-delay: 1.5s; }
-        .use-case-bubble:nth-child(5) { animation-delay: 2s; }
-        .use-case-bubble:nth-child(6) { animation-delay: 2.5s; }
-        .use-case-bubble:nth-child(7) { animation-delay: 3s; }
-        .use-case-bubble:nth-child(8) { animation-delay: 3.5s; }
-        .use-case-bubble:nth-child(9) { animation-delay: 4s; }
-        .use-case-bubble:nth-child(10) { animation-delay: 4.5s; }
-        .use-case-bubble:nth-child(11) { animation-delay: 5s; }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
+        .form-group {
+            margin-bottom: 30px;
         }
 
-        .use-case-bubble:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .use-case-emoji {
-            font-size: 40px;
-            margin-bottom: 10px;
+        .form-label {
             display: block;
-        }
-
-        .use-case-label {
-            font-size: 16px;
-            font-weight: 700;
             color: white;
+            font-size: 14px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-bottom: 10px;
         }
 
-        .more-btn {
-            margin-top: 40px;
-            padding: 15px 40px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 50px;
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
             color: white;
             font-size: 16px;
-            font-weight: 700;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #DCECFC;
+            border: 2px solid black;
+            border-radius: 50px;
+            color: black;
+            font-size: 16px;
+            font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s;
             letter-spacing: 1px;
         }
 
-        .more-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 236, 252, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
         }
 
         /* Footer */
@@ -368,62 +376,56 @@
             </div>
             <div class="nav-right">
                 <a href="/features" class="nav-pill">Features</a>
-                <a href="/use-cases" class="nav-pill active">Use cases</a>
-                <a href="/request-school" class="nav-pill intern">Request Your School</a>
+                <a href="/use-cases" class="nav-pill">Use cases</a>
+                <a href="/request-school" class="nav-pill intern active">Request Your School</a>
                 <a href="/become-intern" class="nav-pill intern">Become Intern</a>
             </div>
         </nav>
 
         <!-- Content Area -->
         <div class="content-area">
-            <div class="use-cases-grid">
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">📚</span>
-                    <div class="use-case-label">Classes</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">📖</span>
-                    <div class="use-case-label">Study Groups</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🎭</span>
-                    <div class="use-case-label">Clubs</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🏛️</span>
-                    <div class="use-case-label">Greek Life</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🏈</span>
-                    <div class="use-case-label">Fantasy Football</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🤖</span>
-                    <div class="use-case-label">AI & Startups</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">💼</span>
-                    <div class="use-case-label">Internships</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🎓</span>
-                    <div class="use-case-label">Alumni</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🎉</span>
-                    <div class="use-case-label">Parties</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🎮</span>
-                    <div class="use-case-label">Gaming</div>
-                </div>
-                <div class="use-case-bubble">
-                    <span class="use-case-emoji">🐾</span>
-                    <div class="use-case-label">Furries</div>
-                </div>
+            <div class="request-form-container">
+                <h1 class="form-title">REQUEST YOUR SCHOOL</h1>
+                <p class="form-subtitle">Want CourseLynx at your university? Let us know and we'll make it happen!</p>
+
+                <form class="request-form" action="https://formsubmit.co/nicolascanoluengo@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" id="successUrl" name="_next">
+                    <input type="hidden" name="_subject" value="New School Request - CourseLynx">
+                    <input type="hidden" name="_cc" value="cory@courselynx.com">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_template" value="table">
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="john@university.edu" required>
+                    </div>
+
+                    <!-- School -->
+                    <div class="form-group">
+                        <label class="form-label" for="school">School *</label>
+                        <input type="text" id="school" name="school" class="form-input" placeholder="Stanford University" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                </form>
             </div>
-            <button class="more-btn">And Many More...</button>
         </div>
+
+        <script>
+            // FormSubmit requires an absolute redirect URL
+            const successUrl = document.getElementById('successUrl');
+            successUrl.value = new URL('/success', window.location.origin).href;
+        </script>
     </div>
 
     <!-- Footer -->
