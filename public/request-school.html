@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <style>
+        /* Base: reset and page defaults */
         * {
             margin: 0;
             padding: 0;
@@ -55,6 +56,11 @@
             font-weight: 900;
             font-size: 14px;
             text-transform: uppercase;
+        }
+
+        /* Keep the separators visually hidden but readable (inventory Q6). */
+        .announcement-text span {
+            color: #DCECFC;
         }
 
         @keyframes scroll {
@@ -382,7 +388,14 @@
     <!-- Sliding Announcement Banner -->
     <div class="announcement-banner">
         <div class="announcement-text">
-            Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span> Bring us to your campus <span style="color: #DCECFC;">and</span> Become a paid intern <span style="color: #DCECFC;">and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
         </div>
     </div>
 
@@ -391,7 +404,7 @@
         <nav>
             <div class="nav-left">
                 <a href="/" class="logo-pill">
-                    <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" alt="Logo">
+                    <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" alt="CourseLynx home">
                 </a>
             </div>
             <div class="nav-right">
@@ -403,7 +416,7 @@
         </nav>
 
         <!-- Content Area -->
-        <div class="content-area">
+        <main class="content-area">
             <div class="request-form-container">
                 <h1 class="form-title">REQUEST YOUR SCHOOL</h1>
                 <p class="form-subtitle">Want CourseLynx at your university? Let us know and we'll make it happen!</p>
@@ -439,7 +452,7 @@
                     <button type="submit" class="submit-btn">Submit Request</button>
                 </form>
             </div>
-        </div>
+        </main>
 
         <script>
             // FormSubmit requires an absolute redirect URL
@@ -449,11 +462,11 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer-wrapper">
+    <footer class="footer-wrapper">
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="/">
-                    <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" loading="lazy" alt="CourseLynx Logo">
+                    <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" loading="lazy" alt="CourseLynx home">
                 </a>
             </div>
             <div class="footer-links">
@@ -471,7 +484,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </footer>
 
 </body>
 </html>
