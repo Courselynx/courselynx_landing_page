@@ -7,3 +7,6 @@ Thumbs.db
 node_modules/
 *.swp
 *.swo
+
+# Pre-resize image originals (kept locally, not deployed)
+image-originals/

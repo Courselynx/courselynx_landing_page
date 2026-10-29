@@ -6,6 +6,9 @@
     <title>Become an Intern - CourseLynx</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="preload" as="image" href="assets/images/link-phone-narrow.jpg" media="(max-width: 480px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/link-phone.jpg" media="(min-width: 481px) and (max-width: 767px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/link.jpg" media="(min-width: 768px)" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
@@ -399,6 +402,23 @@
                 flex-direction: column;
             }
         }
+
+        /* Phones: center crops of link.jpg that keep the exact cover framing, plus a smaller full-frame copy for the footer */
+        @media (max-width: 767px) {
+            .main-wrapper {
+                background-image: url('assets/images/link-phone.jpg');
+            }
+
+            .footer-wrapper {
+                background-image: url('assets/images/link-footer-phone.jpg');
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-wrapper {
+                background-image: url('assets/images/link-phone-narrow.jpg');
+            }
+        }
     </style>
 </head>
 <body>
@@ -414,7 +434,7 @@
         <nav>
             <div class="nav-left">
                 <a href="/" class="logo-pill">
-                    <img src="assets/images/cllogo.png" alt="Logo">
+                    <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" alt="Logo">
                 </a>
             </div>
             <div class="nav-right">
@@ -515,7 +535,7 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="/">
-                    <img src="assets/images/cllogo.png" alt="CourseLynx Logo">
+                    <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" loading="lazy" alt="CourseLynx Logo">
                 </a>
             </div>
             <div class="footer-links">
@@ -526,10 +546,10 @@
             </div>
             <div class="footer-buttons">
                 <a href="https://apps.apple.com/us/app/courselynx/id6475077109?l=es-MX" class="btn-store" target="_blank">
-                    <img src="assets/images/appstore.png" alt="Download on App Store">
+                    <img src="assets/images/appstore.png" srcset="assets/images/appstore.png 2x, assets/images/appstore@3x.png 3x" width="285" height="102" loading="lazy" alt="Download on App Store">
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.courselynx.courselynx_phoenix&hl=en-US" class="btn-store" target="_blank">
-                    <img src="assets/images/googleplay.png" alt="Download on Google Play">
+                    <img src="assets/images/googleplay.png" srcset="assets/images/googleplay.png 2x, assets/images/googleplay@3x.png 3x" width="292" height="104" loading="lazy" alt="Download on Google Play">
                 </a>
             </div>
         </div>
