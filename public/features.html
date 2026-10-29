@@ -58,8 +58,8 @@
             text-transform: uppercase;
         }
 
-        /* Keep the separators visually hidden but readable (inventory Q6). */
-        .announcement-text span {
+        /* Preserve the invisible separator spacing; aria-hidden keeps it out of speech. */
+        .announcement-text span:not(.announcement-copy) {
             color: #DCECFC;
         }
 
@@ -147,24 +147,6 @@
         .nav-pill.active {
             background: #DCECFC;
             color: black;
-        }
-
-        .nav-desktop-link {
-            display: flex;
-            align-items: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-desktop-link:hover {
-            transform: translateY(-2px);
-            opacity: 0.8;
-        }
-
-        .nav-desktop-link img {
-            height: 42px;
-            width: auto;
-            display: block;
         }
 
         /* Page heading for assistive technology, without changing the layout. */
@@ -307,6 +289,9 @@
         }
 
         .arrow-btn {
+            appearance: none;
+            font-family: inherit;
+            line-height: normal;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -579,33 +564,48 @@
                 background-image: url('assets/images/link-phone-narrow.jpg');
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .announcement-text {
+                white-space: normal;
+            }
+
+            .announcement-copy[aria-hidden="true"] {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Sliding Announcement Banner -->
-    <div class="announcement-banner">
-        <div class="announcement-text">
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+    <div class="announcement-banner" role="region" aria-label="Campus opportunities">
+        <div class="announcement-text"><span class="announcement-copy">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span>
         </div>
     </div>
 
     <div class="main-wrapper">
         <!-- Navigation Bar -->
-        <nav>
+        <nav aria-label="Primary">
             <div class="nav-left">
                 <a href="/" class="logo-pill">
                     <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" alt="CourseLynx home">
                 </a>
             </div>
             <div class="nav-right">
-                <a href="/features" class="nav-pill active">Features</a>
+                <a href="/features" class="nav-pill active" aria-current="page">Features</a>
                 <a href="/use-cases" class="nav-pill">Use cases</a>
                 <a href="/request-school" class="nav-pill intern">Request Your School</a>
                 <a href="/become-intern" class="nav-pill intern">Become Intern</a>
@@ -613,31 +613,31 @@
         </nav>
 
         <!-- Content Area -->
-        <main class="content-area">
+        <main class="content-area" aria-label="CourseLynx features">
             <h1 class="visually-hidden">Features</h1>
-            <div class="features-container">
+            <div class="features-container" role="group" aria-roledescription="carousel" aria-label="CourseLynx features: Students Only, 1 of 4">
                 <!-- Left Side: Carousel -->
                 <div class="carousel-section">
                     <div class="carousel-wrapper">
-                        <div class="iphone-screen center">
+                        <div class="iphone-screen center" role="group" aria-roledescription="slide" aria-label="Students Only, 1 of 4">
                             <picture>
                                 <source srcset="assets/images/signin.webp" type="image/webp">
                                 <img src="assets/images/signin.png" width="1018" height="2199" alt="CourseLynx welcome screen with .edu sign-up">
                             </picture>
                         </div>
-                        <div class="iphone-screen left">
+                        <div class="iphone-screen left" role="group" aria-roledescription="slide" aria-label="Accessibility, 2 of 4">
                             <picture>
                                 <source srcset="assets/images/home.webp" type="image/webp">
                                 <img src="assets/images/home.png" width="2377" height="5139" alt="CourseLynx chats for classes, groups, and people">
                             </picture>
                         </div>
-                        <div class="iphone-screen right">
+                        <div class="iphone-screen right" role="group" aria-roledescription="slide" aria-label="Anonymous Messages, 3 of 4">
                             <picture>
                                 <source srcset="assets/images/community.webp" type="image/webp">
                                 <img src="assets/images/community.png" width="2377" height="5139" alt="CourseLynx student profile with clubs, interests, and photos">
                             </picture>
                         </div>
-                        <div class="iphone-screen hidden">
+                        <div class="iphone-screen hidden" role="group" aria-roledescription="slide" aria-label="Rich Media, 4 of 4" aria-hidden="true">
                             <picture>
                                 <source srcset="assets/images/media.webp" type="image/webp">
                                 <img src="assets/images/media.png" width="1019" height="2199" alt="CourseLynx group chat with a poll, voice message, and event">
@@ -646,8 +646,8 @@
                     </div>
 
                     <div class="screen-controls">
-                        <div class="arrow-btn" id="prevBtn">&lt;</div>
-                        <div class="arrow-btn" id="nextBtn">&gt;</div>
+                        <button type="button" class="arrow-btn" id="prevBtn" aria-label="Previous feature">&lt;</button>
+                        <button type="button" class="arrow-btn" id="nextBtn" aria-label="Next feature">&gt;</button>
                     </div>
                 </div>
 
@@ -662,7 +662,7 @@
                     </div>
 
                     <!-- Feature 2: Accessibility -->
-                    <div class="feature-box">
+                    <div class="feature-box" aria-hidden="true">
                         <h2 class="feature-title">ACCESSIBILITY</h2>
                         <p class="feature-description">
                             Group chats for every class, club, and topic. Your entire campus in one place. Never miss an update.
@@ -670,7 +670,7 @@
                     </div>
 
                     <!-- Feature 3: Anonymous Messages -->
-                    <div class="feature-box">
+                    <div class="feature-box" aria-hidden="true">
                         <h2 class="feature-title">ANONYMOUS MESSAGES</h2>
                         <p class="feature-description">
                             Share freely. Ask anything. Stay anonymous when you need to. Connect authentically without judgment.
@@ -678,7 +678,7 @@
                     </div>
 
                     <!-- Feature 4: Rich Media -->
-                    <div class="feature-box">
+                    <div class="feature-box" aria-hidden="true">
                         <h2 class="feature-title">RICH MEDIA</h2>
                         <p class="feature-description">
                             Polls, voice memos, and file sharing. More ways to connect with your campus community.
@@ -691,12 +691,24 @@
     </div>
 
     <script>
+        const carousel = document.querySelector('.features-container');
         const screens = document.querySelectorAll('.iphone-screen');
         const featureBoxes = document.querySelectorAll('.feature-box');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
         let currentIndex = 0;
+
+        function syncCarouselAccessibility() {
+            screens.forEach(screen => {
+                const hidden = screen.classList.contains('hidden');
+                screen.setAttribute('aria-hidden', hidden && !screen.contains(document.activeElement));
+            });
+            featureBoxes.forEach(box => {
+                const hidden = !box.classList.contains('active');
+                box.setAttribute('aria-hidden', hidden && !box.contains(document.activeElement));
+            });
+        }
 
         function updateCarousel() {
             screens.forEach((screen, index) => {
@@ -723,7 +735,14 @@
                     box.classList.remove('active');
                 }
             });
+            const title = featureBoxes[currentIndex].querySelector('.feature-title').textContent;
+            carousel.setAttribute('aria-label', `CourseLynx features: ${title}, ${currentIndex + 1} of ${screens.length}`);
+            syncCarouselAccessibility();
         }
+
+        // Keep any focused content exposed until focus leaves it.
+        carousel.addEventListener('focusin', syncCarouselAccessibility);
+        carousel.addEventListener('focusout', () => queueMicrotask(syncCarouselAccessibility));
 
         nextBtn.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % screens.length;
@@ -740,7 +759,7 @@
     </script>
 
     <!-- Footer -->
-    <footer class="footer-wrapper">
+    <footer class="footer-wrapper" aria-label="CourseLynx links and downloads">
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="/">

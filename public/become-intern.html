@@ -58,8 +58,8 @@
             text-transform: uppercase;
         }
 
-        /* Keep the separators visually hidden but readable (inventory Q6). */
-        .announcement-text span {
+        /* Preserve the invisible separator spacing; aria-hidden keeps it out of speech. */
+        .announcement-text span:not(.announcement-copy) {
             color: #DCECFC;
         }
 
@@ -147,24 +147,6 @@
         .nav-pill.active {
             background: #DCECFC;
             color: black;
-        }
-
-        .nav-desktop-link {
-            display: flex;
-            align-items: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-desktop-link:hover {
-            transform: translateY(-2px);
-            opacity: 0.8;
-        }
-
-        .nav-desktop-link img {
-            height: 42px;
-            width: auto;
-            display: block;
         }
 
         /* Content Area */
@@ -279,6 +261,12 @@
         .file-upload-btn:hover {
             background: rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-file-upload:has(input:focus-visible) .file-upload-btn {
+            outline: 2px solid white;
+            outline-offset: -4px;
+            box-shadow: inset 0 0 0 2px black;
         }
 
         .form-file-upload input[type="file"] {
@@ -425,26 +413,41 @@
                 background-image: url('assets/images/link-phone-narrow.jpg');
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .announcement-text {
+                white-space: normal;
+            }
+
+            .announcement-copy[aria-hidden="true"] {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Sliding Announcement Banner -->
-    <div class="announcement-banner">
-        <div class="announcement-text">
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+    <div class="announcement-banner" role="region" aria-label="Campus opportunities">
+        <div class="announcement-text"><span class="announcement-copy">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span>
         </div>
     </div>
 
     <div class="main-wrapper">
         <!-- Navigation Bar -->
-        <nav>
+        <nav aria-label="Primary">
             <div class="nav-left">
                 <a href="/" class="logo-pill">
                     <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" alt="CourseLynx home">
@@ -454,12 +457,12 @@
                 <a href="/features" class="nav-pill">Features</a>
                 <a href="/use-cases" class="nav-pill">Use cases</a>
                 <a href="/request-school" class="nav-pill intern">Request Your School</a>
-                <a href="/become-intern" class="nav-pill intern active">Become Intern</a>
+                <a href="/become-intern" class="nav-pill intern active" aria-current="page">Become Intern</a>
             </div>
         </nav>
 
         <!-- Content Area -->
-        <main class="content-area">
+        <main class="content-area" aria-label="Intern application">
             <div class="intern-form-container">
                 <h1 class="form-title">JOIN OUR TEAM</h1>
                 <p class="form-subtitle">Help us bring CourseLynx to your campus. Get paid while building the future of college communities.</p>
@@ -476,13 +479,13 @@
                     <!-- Name -->
                     <div class="form-group">
                         <label class="form-label" for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                        <input type="text" id="name" name="name" autocomplete="name" class="form-input" placeholder="John Doe" required>
                     </div>
 
                     <!-- Email -->
                     <div class="form-group">
                         <label class="form-label" for="email">Email *</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="john@university.edu" required>
+                        <input type="email" id="email" name="email" autocomplete="email" class="form-input" placeholder="john@university.edu" required>
                     </div>
 
                     <!-- University -->
@@ -544,7 +547,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer-wrapper">
+    <footer class="footer-wrapper" aria-label="CourseLynx links and downloads">
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="/">

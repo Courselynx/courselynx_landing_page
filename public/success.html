@@ -127,10 +127,17 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(220, 236, 252, 0.4);
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <main class="success-container">
+    <main class="success-container" aria-label="Submission confirmation">
         <div class="checkmark-circle">
             <div class="checkmark">✓</div>
         </div>

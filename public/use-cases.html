@@ -58,8 +58,8 @@
             text-transform: uppercase;
         }
 
-        /* Keep the separators visually hidden but readable (inventory Q6). */
-        .announcement-text span {
+        /* Preserve the invisible separator spacing; aria-hidden keeps it out of speech. */
+        .announcement-text span:not(.announcement-copy) {
             color: #DCECFC;
         }
 
@@ -147,24 +147,6 @@
         .nav-pill.active {
             background: #DCECFC;
             color: black;
-        }
-
-        .nav-desktop-link {
-            display: flex;
-            align-items: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-desktop-link:hover {
-            transform: translateY(-2px);
-            opacity: 0.8;
-        }
-
-        .nav-desktop-link img {
-            height: 42px;
-            width: auto;
-            display: block;
         }
 
         /* Page heading for assistive technology, without changing the layout. */
@@ -255,6 +237,9 @@
         }
 
         .more-btn {
+            font-family: Arial, sans-serif;
+            line-height: normal;
+            text-align: center;
             margin-top: 40px;
             padding: 15px 40px;
             background: rgba(255, 255, 255, 0.12);
@@ -387,26 +372,41 @@
                 background-image: url('assets/images/link-phone-narrow.jpg');
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .announcement-text {
+                white-space: normal;
+            }
+
+            .announcement-copy[aria-hidden="true"] {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Sliding Announcement Banner -->
-    <div class="announcement-banner">
-        <div class="announcement-text">
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+    <div class="announcement-banner" role="region" aria-label="Campus opportunities">
+        <div class="announcement-text"><span class="announcement-copy">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span>
         </div>
     </div>
 
     <div class="main-wrapper">
         <!-- Navigation Bar -->
-        <nav>
+        <nav aria-label="Primary">
             <div class="nav-left">
                 <a href="/" class="logo-pill">
                     <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" alt="CourseLynx home">
@@ -414,14 +414,14 @@
             </div>
             <div class="nav-right">
                 <a href="/features" class="nav-pill">Features</a>
-                <a href="/use-cases" class="nav-pill active">Use cases</a>
+                <a href="/use-cases" class="nav-pill active" aria-current="page">Use cases</a>
                 <a href="/request-school" class="nav-pill intern">Request Your School</a>
                 <a href="/become-intern" class="nav-pill intern">Become Intern</a>
             </div>
         </nav>
 
         <!-- Content Area -->
-        <main class="content-area">
+        <main class="content-area" aria-label="CourseLynx use cases">
             <h1 class="visually-hidden">Use cases</h1>
             <div class="use-cases-grid">
                 <div class="use-case-bubble">
@@ -469,12 +469,12 @@
                     <div class="use-case-label">Furries</div>
                 </div>
             </div>
-            <button class="more-btn">And Many More...</button>
+            <div class="more-btn">And Many More...</div>
         </main>
     </div>
 
     <!-- Footer -->
-    <footer class="footer-wrapper">
+    <footer class="footer-wrapper" aria-label="CourseLynx links and downloads">
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="/">

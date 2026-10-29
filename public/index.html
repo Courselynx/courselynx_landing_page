@@ -58,8 +58,8 @@
             text-transform: uppercase;
         }
 
-        /* Keep the separators visually hidden but readable (inventory Q6). */
-        .announcement-text span {
+        /* Preserve the invisible separator spacing; aria-hidden keeps it out of speech. */
+        .announcement-text span:not(.announcement-copy) {
             color: #DCECFC;
         }
 
@@ -128,16 +128,6 @@
         }
 
         .nav-pill:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-pill.download {
-            background: white;
-            color: black;
-        }
-
-        .nav-pill.download:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
@@ -242,80 +232,6 @@
         .btn-store:hover {
             transform: translateY(-2px);
             opacity: 0.9;
-        }
-
-        /* Join Users Badge - Blue Liquid Glass */
-        .join-users-badge {
-            margin-top: 20px;
-            background: rgba(59, 130, 246, 0.15);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 16px;
-            padding: 14px 24px;
-            border: 1.5px solid rgba(96, 165, 250, 0.5);
-            box-shadow:
-                0 8px 32px rgba(59, 130, 246, 0.25),
-                inset 0 1px 0 rgba(147, 197, 253, 0.4),
-                0 0 40px rgba(59, 130, 246, 0.15);
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .join-users-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(180deg,
-                rgba(147, 197, 253, 0.2) 0%,
-                rgba(147, 197, 253, 0) 100%);
-            border-radius: 16px 16px 0 0;
-            pointer-events: none;
-        }
-
-        .join-users-badge::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 16px;
-            padding: 1.5px;
-            background: linear-gradient(135deg,
-                rgba(147, 197, 253, 0.6) 0%,
-                rgba(59, 130, 246, 0.4) 50%,
-                rgba(96, 165, 250, 0.6) 100%);
-            /* Expanded color stops are equivalent and supported by Nu's CSS parser. */
-            -webkit-mask: linear-gradient(#fff 0, #fff 0) content-box, linear-gradient(#fff 0, #fff 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            opacity: 0.8;
-        }
-
-        .join-users-badge:hover {
-            transform: translateY(-2px);
-            box-shadow:
-                0 12px 40px rgba(59, 130, 246, 0.35),
-                inset 0 1px 0 rgba(147, 197, 253, 0.5),
-                0 0 50px rgba(59, 130, 246, 0.25);
-            border-color: rgba(147, 197, 253, 0.7);
-        }
-
-        .join-users-badge-icon {
-            font-size: 18px;
-        }
-
-        .join-users-badge-text {
-            font-size: 14px;
-            font-weight: 900;
-            color: white;
-            letter-spacing: 0.3px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
         }
 
         /* University Slider */
@@ -901,26 +817,55 @@
                 background-image: url('assets/images/link-phone-narrow.jpg');
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .announcement-text {
+                white-space: normal;
+            }
+
+            .announcement-copy[aria-hidden="true"] {
+                display: none;
+            }
+
+            .university-slider-wrapper {
+                width: 100%;
+            }
+
+            .university-slider {
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .university-slider + .university-slider {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Sliding Announcement Banner -->
-    <div class="announcement-banner">
-        <div class="announcement-text">
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
-            Bring us to your campus <span>and</span> Become a paid intern <span>and</span>
+    <div class="announcement-banner" role="region" aria-label="Campus opportunities">
+        <div class="announcement-text"><span class="announcement-copy">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span><span class="announcement-copy" aria-hidden="true">
+            Bring us to your campus <span aria-hidden="true">and</span> Become a paid intern <span aria-hidden="true">and</span></span>
         </div>
     </div>
 
     <div class="main-wrapper">
         <!-- Navigation Bar -->
-        <nav>
+        <nav aria-label="Primary">
             <div class="nav-left">
                 <a href="/" class="logo-pill">
                     <img src="assets/images/cllogo.png" srcset="assets/images/cllogo.png 2x, assets/images/cllogo@3x.png 3x" width="136" height="165" alt="CourseLynx home">
@@ -938,7 +883,7 @@
         </nav>
 
         <!-- Main Content -->
-        <main class="container">
+        <main class="container" aria-label="CourseLynx app">
             <!-- Left Side -->
             <div class="left-side">
                 <div class="hero-text">
@@ -958,21 +903,21 @@
 
             <!-- Right Side - iPhone Screen -->
             <div class="right-side">
-                <div class="iphone-container">
+                <div class="iphone-container" role="group" aria-roledescription="carousel" aria-label="CourseLynx app screens: Clubs, 2 of 3">
                     <div class="carousel-wrapper">
-                        <div class="iphone-screen left" data-screen="1">
+                        <div class="iphone-screen left" role="group" aria-roledescription="slide" aria-label="Classes, 1 of 3">
                             <picture>
                                 <source srcset="assets/images/classes.webp" type="image/webp">
                                 <img src="assets/images/classes.png" width="1019" height="2199" alt="CourseLynx class chat with study messages and reactions">
                             </picture>
                         </div>
-                        <div class="iphone-screen center" data-screen="2">
+                        <div class="iphone-screen center" role="group" aria-roledescription="slide" aria-label="Clubs, 2 of 3">
                             <picture>
                                 <source srcset="assets/images/clubs.webp" type="image/webp">
                                 <img src="assets/images/clubs.png" width="1019" height="2199" alt="CourseLynx directory of campus clubs and organizations">
                             </picture>
                         </div>
-                        <div class="iphone-screen right" data-screen="3">
+                        <div class="iphone-screen right" role="group" aria-roledescription="slide" aria-label="Community, 3 of 3">
                             <picture>
                                 <source srcset="assets/images/community.webp" type="image/webp">
                                 <img src="assets/images/community.png" width="2377" height="5139" alt="CourseLynx student profile with clubs, interests, and photos">
@@ -980,7 +925,7 @@
                         </div>
 
                         <!-- Liquid Glass Label for Classes Screen -->
-                        <div class="classes-label-container">
+                        <div class="classes-label-container" aria-hidden="true">
                             <div class="liquid-glass-label">
                                 <div class="label-text">Your classes, unified</div>
                                 <div class="label-subtext">Auto-join class chats from Canvas & access study materials</div>
@@ -989,7 +934,7 @@
                         </div>
 
                         <!-- Liquid Glass Label for Clubs Screen -->
-                        <div class="clubs-label-container">
+                        <div class="clubs-label-container" aria-hidden="true">
                             <div class="connecting-line"></div>
                             <div class="liquid-glass-label">
                                 <div class="label-text">Explore campus clubs</div>
@@ -998,7 +943,7 @@
                         </div>
 
                         <!-- Liquid Glass Label for Community Screen -->
-                        <div class="community-label-container">
+                        <div class="community-label-container" aria-hidden="true">
                             <div class="connecting-line"></div>
                             <div class="liquid-glass-label">
                                 <div class="label-text">Discover your tribe</div>
@@ -1007,9 +952,9 @@
                         </div>
                     </div>
                     <div class="screen-controls">
-                        <button class="arrow-btn" id="prevBtn">&lt;</button>
+                        <button type="button" class="arrow-btn" id="prevBtn" aria-label="Previous app screen">&lt;</button>
                         <div class="screen-label" id="screenLabel">Clubs</div>
-                        <button class="arrow-btn" id="nextBtn">&gt;</button>
+                        <button type="button" class="arrow-btn" id="nextBtn" aria-label="Next app screen">&gt;</button>
                     </div>
                 </div>
             </div>
@@ -1017,8 +962,8 @@
     </div>
 
     <!-- University Slider -->
-    <div class="university-slider-section">
-        <h2 class="university-header">Used by students at...</h2>
+    <div class="university-slider-section" role="region" aria-labelledby="universityHeading">
+        <h2 class="university-header" id="universityHeading">Used by students at...</h2>
         <div class="university-slider-wrapper">
             <div class="university-slider">
                 <img src="assets/logos/uf.png" srcset="assets/logos/uf.png 2x, assets/logos/uf@3x.png 3x" width="270" height="180" alt="University of Florida" class="university-logo">
@@ -1063,7 +1008,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer-wrapper">
+    <footer class="footer-wrapper" aria-label="CourseLynx links and downloads">
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="/">
@@ -1091,6 +1036,7 @@
     </footer>
 
     <script>
+        const carousel = document.querySelector('.iphone-container');
         const screens = document.querySelectorAll('.iphone-screen');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -1101,6 +1047,17 @@
 
         const labels = ['Classes', 'Clubs', 'Community'];
         let currentIndex = 2; // Center screen is at index 2 (Community)
+
+        function syncCarouselAccessibility() {
+            screens.forEach(screen => {
+                const hidden = screen.classList.contains('hidden');
+                screen.setAttribute('aria-hidden', hidden && !screen.contains(document.activeElement));
+            });
+            [classesLabel, clubsLabel, communityLabel].forEach(label => {
+                const hidden = !label.classList.contains('active');
+                label.setAttribute('aria-hidden', hidden && !label.contains(document.activeElement));
+            });
+        }
 
         function updateCarousel() {
             screens.forEach((screen, index) => {
@@ -1121,6 +1078,7 @@
 
             // Update label text
             screenLabel.textContent = labels[currentIndex];
+            carousel.setAttribute('aria-label', `CourseLynx app screens: ${labels[currentIndex]}, ${currentIndex + 1} of ${screens.length}`);
 
             // Show/hide labels based on current screen
             if (currentIndex === 0) { // Classes screen
@@ -1136,7 +1094,12 @@
                 clubsLabel.classList.remove('active');
                 communityLabel.classList.add('active');
             }
+            syncCarouselAccessibility();
         }
+
+        // Keep any focused content exposed until focus leaves it.
+        carousel.addEventListener('focusin', syncCarouselAccessibility);
+        carousel.addEventListener('focusout', () => queueMicrotask(syncCarouselAccessibility));
 
         nextBtn.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % screens.length;
